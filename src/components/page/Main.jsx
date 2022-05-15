@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import Group from '../Group/Group';
+import { groupByContinent, groupByLanguages } from '../../helpers/groupBy';
+import useData from '../../hooks/useData';
 import SearchIcon from '../../assets/icons/search.svg';
 
 import './main.css';
 
 function Main() {
+  const { data, loading } = useData();
   const [active, setActive] = useState('continent');
+  let result = [];
+
+  if (!loading) {
+    if (active === 'continent') {
+      result = groupByContinent(data.countries, 'name');
+    } else {
+      result = groupByLanguages(data.countries, 'name');
+    }
+  }
 
   return (
     <div className="container main__container">
@@ -37,8 +49,16 @@ function Main() {
         </div>
       </div>
       <div className="main__groups">
-        <Group continent="Sur America" />
-        <Group continent="Asia" />
+        {loading && (
+          <h2> Cargando..</h2>
+        )}
+        {result !== [] && Object.keys(result).map((option) => (
+          <Group
+            key={option}
+            groupBy={option}
+            cardData={result[option]}
+          />
+        ))}
       </div>
     </div>
   );
