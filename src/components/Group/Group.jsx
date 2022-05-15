@@ -5,36 +5,37 @@ import Card from '../Card/Card';
 import './group.css';
 
 function Group({
-  continent,
+  groupBy,
+  cardData,
 }) {
   return (
     <>
       <div className="group__title">
         {/* Continent or Language */}
         <h2>
-          {continent}
+          {groupBy}
         </h2>
       </div>
       <div className="group__cards scrollbar">
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-        <Card capital="Buenos Aires" country="argentina" currency="algo" emoji="emoji" language="Espanol" />
-
+        {cardData.map(({
+          capital, name, currency, emoji,
+        }) => (
+          <Card capital={capital} country={name} currency={currency} emoji={emoji} />
+        ))}
       </div>
     </>
   );
 }
 
 Group.propTypes = {
-  continent: PropTypes.string,
+  groupBy: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  cardData: PropTypes.object,
+
 };
 
 Group.defaultProps = {
-  continent: null,
+  groupBy: null,
+  cardData: null,
 };
 export default Group;

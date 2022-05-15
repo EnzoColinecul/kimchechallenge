@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './card.css';
 
 function Card({
-  country, emoji, language, currency, capital,
+  country, emoji, currency, capital,
 }) {
   return (
     <div className="card">
@@ -25,11 +25,6 @@ function Card({
             {' '}
             {currency}
           </li>
-          <li>
-            Language:
-            {' '}
-            {language}
-          </li>
         </ul>
       </div>
     </div>
@@ -37,7 +32,6 @@ function Card({
 }
 Card.propTypes = {
   country: PropTypes.string,
-  language: PropTypes.string,
   currency: PropTypes.string,
   emoji: PropTypes.string,
   capital: PropTypes.string,
@@ -45,7 +39,6 @@ Card.propTypes = {
 
 Card.defaultProps = {
   country: null,
-  language: null,
   currency: null,
   emoji: null,
   capital: null,
