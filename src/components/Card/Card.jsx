@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import './card.css';
 
 function Card({
@@ -16,12 +17,12 @@ function Card({
       <div className="card__content">
         <ul>
           <li>
-            Capital:
+            <strong>Capital:</strong>
             {' '}
             {capital}
           </li>
           <li>
-            Currency:
+            <strong>Currency:</strong>
             {' '}
             {currency}
           </li>
