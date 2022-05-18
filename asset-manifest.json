@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/kimchechallenge/static/css/main.3ad26a11.css",
+    "main.css": "/kimchechallenge/static/css/main.7b2a64ea.css",
     "main.js": "/kimchechallenge/static/js/main.cb2410b9.js",
     "index.html": "/kimchechallenge/index.html",
     "static/media/search.svg": "/kimchechallenge/static/media/search.f326cfeb43dbf9dd272fa19497a01d18.svg",
-    "main.3ad26a11.css.map": "/kimchechallenge/static/css/main.3ad26a11.css.map",
+    "main.7b2a64ea.css.map": "/kimchechallenge/static/css/main.7b2a64ea.css.map",
     "main.cb2410b9.js.map": "/kimchechallenge/static/js/main.cb2410b9.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ad26a11.css",
+    "static/css/main.7b2a64ea.css",
     "static/js/main.cb2410b9.js"
   ]
 }
