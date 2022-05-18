@@ -7,7 +7,7 @@ export const groupByContinent = (objectArray, property) => objectArray.reduce((a
   return acc;
 }, {});
 
-export const groupByLanguages = (objectArray, property) => objectArray.reduce((acc, obj) => {
+export const groupByLanguage = (objectArray, property) => objectArray.reduce((acc, obj) => {
   obj.languages.forEach((language) => {
     const key = language[property];
     if (!acc[key]) {

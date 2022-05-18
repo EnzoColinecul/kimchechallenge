@@ -20,7 +20,7 @@ function Group({
         {cardData.map(({
           capital, name, currency, emoji,
         }) => (
-          <Card capital={capital} country={name} currency={currency} emoji={emoji} />
+          <Card key={name} capital={capital} country={name} currency={currency} emoji={emoji} />
         ))}
       </div>
     </>
@@ -30,7 +30,7 @@ function Group({
 Group.propTypes = {
   groupBy: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
-  cardData: PropTypes.object,
+  cardData: PropTypes.array,
 
 };
 
