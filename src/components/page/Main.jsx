@@ -13,30 +13,28 @@ function Main() {
   const [filterResult, setFilterResult] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value);
-    setFilterResult(data?.countries
-      .filter((res) => res.name.toLowerCase().startsWith(search.toLowerCase())));
-  };
-
   useEffect(() => {
-    if (!loading && filterResult.length > 0) {
-      if (active === 'continent') {
-        setSearchResult(groupByContinent(filterResult, 'name'));
-      } else {
+    if (filterResult.length > 0) {
+      if (active === 'continent') { setSearchResult(groupByContinent(filterResult, 'name')); } else {
         setSearchResult(groupByLanguage(filterResult, 'name'));
       }
     }
 
-    if (filterResult.length === 0 && !loading && active === 'continent') {
+    if (search === '' && !loading && active === 'continent') {
       setSearchResult(groupByContinent(data?.countries, 'name'));
     }
 
-    if (filterResult.length === 0 && !loading && active === 'language') {
+    if (search === '' && !loading && active === 'language') {
       setSearchResult(groupByLanguage(data?.countries, 'name'));
     }
-  }, [data, search, filterResult, active, loading]);
+  }, [data, active, loading, filterResult]);
+
+  useEffect(() => {
+    if (!loading) {
+      setFilterResult(data?.countries
+        .filter((res) => res.name.toLowerCase().startsWith(search.toLowerCase())));
+    }
+  }, [search]);
 
   return (
     <div className="container main__container">
@@ -45,7 +43,7 @@ function Main() {
         <h3>Try typing something in the field below</h3>
         <div className="main__input">
           <img src={SearchIcon} alt="search-icon" />
-          <input value={search} onChange={handleSearch} type="text" />
+          <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" />
         </div>
         <div className="main__options">
           <h3>Group by:</h3>
